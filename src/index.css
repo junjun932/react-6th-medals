@@ -27,5 +27,21 @@ button {
     text-align: center;
     color: navy;
   }
-
+table {
+  width: 100%;
+}
   
+th, td {
+  text-align: center;
+}
+
+th {
+  background-color: blue;
+  color:white;
+  text-align: center;
+}
+
+.delete {
+  color: white;
+  background-color: red;
+}

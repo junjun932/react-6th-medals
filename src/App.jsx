@@ -73,7 +73,10 @@ function App() {
               <td>{country.silver}</td>
               <td>{country.bronze}</td>
               <td>
-                <button onClick={() => onDelete(country.countryName)}>
+                <button
+                  className="delete"
+                  onClick={() => onDelete(country.countryName)}
+                >
                   삭제
                 </button>
               </td>
