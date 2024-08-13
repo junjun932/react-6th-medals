@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function App() {
   const [countries, setCountries] = useState([]);
-  const [country, setCountry] = useState("");
+  const [countryName, setCountryName] = useState("");
   const [gold, setGold] = useState(0);
   const [silver, setSilver] = useState(0);
   const [bronze, setBronze] = useState(0);
@@ -11,10 +11,9 @@ function App() {
   function onSubmit(event) {
     event.preventDefault();
 
-    console.log(country, gold, silver, bronze);
     setCountries([
       {
-        country,
+        countryName,
         gold,
         silver,
         bronze,
@@ -22,10 +21,31 @@ function App() {
       ...countries,
     ]);
 
-    setCountry("");
+    setCountryName("");
     setGold(0);
     setSilver(0);
     setBronze(0);
+  }
+  function onUpdate() {
+    const targetCountry = countries.find(
+      (country) => countryName === country.countryName
+    );
+
+    const newCountries = countries.map((country) => {
+      if (country.countryName === targetCountry.countryName) {
+        const newCountry = {
+          countryName,
+          gold,
+          silver,
+          bronze,
+        };
+        return newCountry;
+      }
+      return country;
+    });
+
+    console.log(targetCountry);
+    setCountries(newCountries);
   }
 
   return (
@@ -38,8 +58,8 @@ function App() {
             type="text"
             placeholder="국가입력"
             name="country"
-            value={country}
-            onChange={(event) => setCountry(event.target.value)}
+            value={countryName}
+            onChange={(event) => setCountryName(event.target.value)}
           ></input>
         </div>
         <div>
@@ -73,12 +93,14 @@ function App() {
           ></input>
         </div>
         <button type="submit">국가추가</button>
-        <button type="button">업데이트</button>
+        <button type="button" onClick={onUpdate}>
+          업데이트
+        </button>
       </form>
       <div>
         {countries.map((country) => (
-          <p key={country.country}>
-            {country.country} {country.gold} {country.silver}
+          <p key={country.countryName}>
+            {country.countryName} {country.gold} {country.silver}
             {country.bronze}
           </p>
         ))}
