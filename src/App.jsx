@@ -47,7 +47,15 @@ function App() {
     console.log(targetCountry);
     setCountries(newCountries);
   }
-
+  function onDelete(countryName) {
+    const filteredCountries = countries.filter((country) => {
+      if (countryName === country.countryName) {
+        return false;
+      }
+      return true;
+    });
+    setCountries(filteredCountries);
+  }
   return (
     <div className="container">
       <h1>2024 파리 올림픽 메달 트래커</h1>
@@ -99,10 +107,13 @@ function App() {
       </form>
       <div>
         {countries.map((country) => (
-          <p key={country.countryName}>
-            {country.countryName} {country.gold} {country.silver}
-            {country.bronze}
-          </p>
+          <div key={country.countryName}>
+            <p>
+              {country.countryName} {country.gold} {country.silver}
+              {country.bronze}
+            </p>
+            <button onClick={() => onDelete(country.countryName)}>삭제</button>
+          </div>
         ))}
       </div>
     </div>
