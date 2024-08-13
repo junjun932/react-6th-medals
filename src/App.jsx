@@ -31,6 +31,11 @@ function App() {
       (country) => countryName === country.countryName
     );
 
+    if (targetCountry !== targetCountry) {
+      alert("중복된 국가입니다");
+      return;
+    }
+
     const newCountries = countries.map((country) => {
       if (country.countryName === targetCountry.countryName) {
         const newCountry = {
@@ -46,6 +51,37 @@ function App() {
 
     console.log(targetCountry);
     setCountries(newCountries);
+  }
+
+  function medalTable() {
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>국가 </th>
+            <th>금메달</th>
+            <th>은메달</th>
+            <th>동메달</th>
+            <th>액션</th>
+          </tr>
+        </thead>
+        <tbody>
+          {countries.map((country) => (
+            <tr key={country.countryName}>
+              <td>{country.countryName}</td>
+              <td>{country.gold}</td>
+              <td>{country.silver}</td>
+              <td>{country.bronze}</td>
+              <td>
+                <button onClick={() => onDelete(country.countryName)}>
+                  삭제
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    );
   }
   function onDelete(countryName) {
     const filteredCountries = countries.filter((country) => {
@@ -105,17 +141,8 @@ function App() {
           업데이트
         </button>
       </form>
-      <div>
-        {countries.map((country) => (
-          <div key={country.countryName}>
-            <p>
-              {country.countryName} {country.gold} {country.silver}
-              {country.bronze}
-            </p>
-            <button onClick={() => onDelete(country.countryName)}>삭제</button>
-          </div>
-        ))}
-      </div>
+      <p>아직 추가된 국가가 없습니다 .메달을 추가하세요 !</p>
+      <div>{medalTable()} </div>
     </div>
   );
 }
