@@ -59,7 +59,14 @@ function App() {
         <button type="submit">국가추가</button>
         <button type="button">업데이트</button>
       </form>
-      <div>{/* 메달 집계 리스트가 표시될 자리 */}</div>
+      <div>
+        {countries.map((country) => (
+          <p key={country.country}>
+            {country.country} {country.gold} {country.silver}
+            {country.bronze}
+          </p>
+        ))}
+      </div>
     </div>
   );
 }
