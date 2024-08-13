@@ -32,30 +32,46 @@ function App() {
     <div className="container">
       <h1>2024 파리 올림픽 메달 트래커</h1>
       <form className="input-group" onSubmit={onSubmit}>
-        <input
-          type="text"
-          name="country"
-          value={country}
-          onChange={(event) => setCountry(event.target.value)}
-        ></input>
-        <input
-          type="number"
-          name="gold"
-          value={gold}
-          onChange={(event) => setGold(event.target.value)}
-        ></input>
-        <input
-          type="number"
-          name="silver"
-          value={silver}
-          onChange={(event) => setSilver(event.target.value)}
-        ></input>
-        <input
-          type="number"
-          name="bronze"
-          value={bronze}
-          onChange={(event) => setBronze(event.target.value)}
-        ></input>
+        <div>
+          <label>국가명</label>
+          <input
+            type="text"
+            placeholder="국가입력"
+            name="country"
+            value={country}
+            onChange={(event) => setCountry(event.target.value)}
+          ></input>
+        </div>
+        <div>
+          <label>금메달</label>
+
+          <input
+            type="number"
+            name="gold"
+            value={gold}
+            onChange={(event) => setGold(event.target.value)}
+          ></input>
+        </div>
+        <div>
+          <label>은메달</label>
+
+          <input
+            type="number"
+            name="silver"
+            value={silver}
+            onChange={(event) => setSilver(event.target.value)}
+          ></input>
+        </div>
+        <div>
+          <label>동메달</label>
+
+          <input
+            type="number"
+            name="bronze"
+            value={bronze}
+            onChange={(event) => setBronze(event.target.value)}
+          ></input>
+        </div>
         <button type="submit">국가추가</button>
         <button type="button">업데이트</button>
       </form>

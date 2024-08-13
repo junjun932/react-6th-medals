@@ -7,3 +7,22 @@
   border-radius: 8px; 
 }
 
+button {
+    padding: 8px 16px;
+    background-color: #ffd700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    gap:10px;
+  }
+
+  form{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    color: navy;
+  }
